@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yewon.mapper.UserMapper">
+    <select id="selectUser" parameterType="String" resultType="userDto">
+        SELECT
+          user_id as userId,
+          name as userName,
+          password as userPassword,
+          user_join_date as userJoinDate,
+          user_login_date as userLoginDate
+        FROM User
+        WHERE user_id=#{userId}
+    </select>
+    <insert id="insertUser" parameterType="userDto">
+        INSERT INTO User(user_id, password, name) VALUES(#{userId}, #{userPassword}, #{userName})
+    </insert>
+</mapper>
